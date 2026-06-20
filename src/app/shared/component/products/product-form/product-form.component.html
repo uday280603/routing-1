@@ -1,0 +1,50 @@
+<div class="col-md-8 offset-md-2">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="productsForm" (ngSubmit)="onAddProduct()">
+        <div class="form-group">
+          <label for="pname">Product name*</label>
+          <input
+            id="pname"
+            formControlName="pname"
+            type="text"
+            class="form-control"
+          />
+          <strong 
+          *ngIf="getControls['pname'].touched && getControls['pname'].hasError('required')"
+          class="text-danger"
+          >Enter product name...!</strong>
+        </div>
+        <div class="form-group">
+          <label for="pstatus">Product Status*</label>
+          <select
+            id="pstatus"
+            formControlName="pstatus"
+            type="text"
+            class="form-control"
+          >
+            <option value="Pending">Pending</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Delivered">Delivered</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="canReturn">Product CanReturn*</label>
+          <select
+            id="canReturn"
+            formControlName="canReturn"
+            type="text"
+            class="form-control"
+          >
+            <option [ngValue]="1">Yes</option>
+            <option [ngValue]="0">No</option>
+          </select>
+        </div>
+        <button *ngIf="!isInEditMode" class="w-100" mat-raised-button color="primary" type="submit">Add Product</button>
+         <button
+         [disabled]="disableSubmitBtn"
+          *ngIf="isInEditMode"  class="w-100" mat-raised-button color="accent" type="button" (click)="onUpdateProduct()">Update Product</button>
+      </form>
+    </div>
+  </div>
+</div>

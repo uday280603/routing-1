@@ -1,1 +1,28 @@
-<p>products works!</p>
+<div class="row">
+  <div class="col-md-12 text-right">
+    <button class="btn btn-primary btn-sm" routerLink="addProduct">
+      Add Product
+    </button>
+  </div>
+  <div class="col-md-4">
+    Product List
+    <ul class="list-group">
+      <li
+        [routerLink]="[product.pid]"
+        [queryParams]="{cr : product.canReturn}"
+        class="list-group-item d-flex justify-content-between"
+        *ngFor="let product of getAllProducts"
+      >
+       <strong> {{ product.pname }}</strong>
+        <small class="badge" [ngClass]="{
+          'badge-success' :  product.pstatus === 'Delivered',
+          'badge-warning' :  product.pstatus === 'Shipped',
+          'badge-danger' :  product.pstatus === 'Pending'
+
+
+        }">{{product.pstatus}}</small>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-8">Product Description</div>
+</div>

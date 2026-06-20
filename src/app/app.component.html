@@ -1,37 +1,41 @@
 <div class="container mt-3">
-
-
   <div class="row">
     <div class="col-12">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <!-- <a class="navbar-brand" routerLink="/home">Navbar</a> -->
 
-        <button
+        <!-- <button
           class="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarNavAltMarkup"
         >
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" routerLink="/home">Home</a>
-            <a class="nav-link" routerLink="/users">Users</a>
-            <a class="nav-link" routerLink="/products">Products</a>
-            <a class="nav-link" routerLink="/fairs">Fairs</a>
+            <a routerLinkActive="active" class="nav-link" routerLink="/home"
+              >Home</a
+            >
+            <a routerLinkActive="active" class="nav-link" routerLink="/users"
+              >Users</a
+            >
+            <a routerLinkActive="active" class="nav-link" routerLink="/products"
+              >Products</a
+            >
+            <a routerLinkActive="active" class="nav-link" routerLink="/fairs"
+              >Fairs</a
+            >
           </div>
         </div>
       </nav>
     </div>
   </div>
 
- 
   <div class="row mt-3">
     <div class="col-12">
       <router-outlet></router-outlet>
     </div>
   </div>
-
 </div>
