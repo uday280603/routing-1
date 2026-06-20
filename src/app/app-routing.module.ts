@@ -6,6 +6,8 @@ import { ProductsComponent } from './shared/component/products/products.componen
 import { FairsComponent } from './shared/component/fairs/fairs.component';
 import { SProductComponent } from './shared/component/products/s-product/s-product.component';
 import { ProductFormComponent } from './shared/component/products/product-form/product-form.component';
+import { FormComponent } from './shared/component/users/form/form.component';
+import { SUserComponent } from './shared/component/users/s-user/s-user.component';
 
 const routs: Routes = [
   {
@@ -39,6 +41,18 @@ const routs: Routes = [
     path : 'products/:id/edit',
     component : ProductFormComponent
   }
+  ,
+    
+  {
+    path : 'users/addUser',
+    component : FormComponent
+  }
+  ,
+  {
+    path : 'users/:userId',
+    component : SUserComponent
+  }
+ 
   ,
   {
     path : 'fairs',

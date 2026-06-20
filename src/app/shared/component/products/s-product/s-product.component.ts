@@ -28,14 +28,14 @@ export class SProductComponent implements OnInit {
     
   }
   getProducts() {
-    this.productId = this._routes.snapshot.params['id'];
+  //  this.productId = this._routes.snapshot.params['id'];
     this.productId = this._routes.snapshot.paramMap.get('id')!;
     console.log(this.productId);
     if (this.productId) {
       this._productService.fetchProductById(this.productId).subscribe({
         next: (data) => {
           this.productObj = data;
-        },
+        }
       });
     }
     // this._routes.params.subscribe((param) => {

@@ -1,1 +1,26 @@
-<p>users works!</p>
+<div class="row">
+  <div class="col-md-12 text-right">
+    <button
+    routerLink="addUser"
+     mat-raised-button color="primary">Add User</button>
+  </div>
+  <div class="col-md-4">
+    <ul class="list-group">
+      <li
+      [routerLink]="[user.userId]"
+        class="list-group-item d-flex justify-content-between"
+        *ngFor="let user of getAllUsers"
+      >
+        <strong>{{ user.userName }}</strong
+        ><small
+          class="badge"
+          [ngClass]="{
+            'badge-success': user.isActive === true,
+            'badge-danger': user.isActive === false
+          }"
+          >{{ user.isActive  ? 'Yes' : 'No'}}</small
+        >
+      </li>
+    </ul>
+  </div>
+</div>

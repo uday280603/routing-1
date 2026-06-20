@@ -1,0 +1,271 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="userForm" (ngSubmit)="onAddUser()">
+          <div class="form-group">
+            <label for="userName">User Name*</label>
+            <input
+              type="text"
+              class="form-control"
+              id="userName"
+              formControlName="userName"
+              placeholder="Enter user name"
+            />
+            <strong
+              *ngIf="
+                getControl['userName'].touched &&
+                getControl['userName'].hasError('required')
+              "
+              class="text-danger"
+            >
+              Username is required..!
+            </strong>
+          </div>
+          <div class="form-group">
+            <label for="userRole">User Role*</label>
+            <select
+              name="userRole"
+              id="userRole"
+              formControlName="userRole"
+              class="form-control"
+            >
+              <option value="Candidate">Candidate</option>
+              <option value="Admin">Admin</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="profileImage">Profile Image*</label>
+            <input
+              type="text"
+              id="profileImage"
+              formControlName="profileImage"
+              class="form-control"
+              placeholder="Enter profile url"
+            />
+            <strong
+              *ngIf="
+                getControl['profileImage'].touched &&
+                getControl['profileImage'].hasError('required')
+              "
+              class="text-danger"
+            >
+              Profile url is necessary..!
+            </strong>
+          </div>
+          <div class="form-group">
+            <label for="experienceYears">Experience Years*</label>
+            <select
+              name="experienceYears"
+              id="experienceYears"
+              formControlName="experienceYears"
+              class="form-control"
+            >
+              <option [ngValue]="'0 to 2 Years'">0 to 2 Years</option>
+              <option [ngValue]="'2 to 4 Years'">2 to 4 Years</option>
+              <option [ngValue]="'4 to 6 Years'">4 to 6 Years</option>
+              <option [ngValue]="'6 to 8 Years'">6 to 8 Years</option>
+              <option [ngValue]="'8 to 10 Years'">8 to 10 Years</option>
+              <option [ngValue]="'10+ Years'">10+ Years</option>
+            </select>
+            <strong
+              *ngIf="
+                getControl['experienceYears'].touched &&
+                getControl['experienceYears'].hasError('required')
+              "
+              class="text-danger"
+              >Select your working experience..!</strong
+            >
+          </div>
+          <div class="form-group">
+            <label for="isActive">Is Active*</label>
+            <select
+              name="isActive"
+              id="isActive"
+              formControlName="isActive"
+              class="form-control"
+            >
+              <option [ngValue]="true">Active</option>
+              <option [ngValue]="false">In-Active</option>
+            </select>
+          </div>
+          <div class="row mb-3" formGroupName="address">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body" formGroupName="current">
+                  <p class="alert alert-success">Current Address*</p>
+                  <div class="form-group">
+                    <label for="city">City*</label>
+                    <input
+                      type="text"
+                      id="city"
+                      class="form-control"
+                      formControlName="city"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="state">State*</label>
+                    <input
+                      type="text"
+                      id="state"
+                      class="form-control"
+                      formControlName="state"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="country">Country*</label>
+                    <input
+                      type="text"
+                      id="country"
+                      class="form-control"
+                      formControlName="country"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="zipCode">Zip Code*</label>
+                    <input
+                      type="text"
+                      id="zipCode"
+                      class="form-control"
+                      formControlName="zipCode"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body" formGroupName="permanent">
+                  <p class="alert alert-info">Permanent Address*</p>
+                  <div class="form-group">
+                    <label for="city">City*</label>
+                    <input
+                      type="text"
+                      id="city"
+                      class="form-control"
+                      formControlName="city"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="state">State*</label>
+                    <input
+                      type="text"
+                      id="state"
+                      class="form-control"
+                      formControlName="state"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="country">Country*</label>
+                    <input
+                      type="text"
+                      id="country"
+                      class="form-control"
+                      formControlName="country"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="zipCode">Zip Code*</label>
+                    <input
+                      type="text"
+                      id="zipCode"
+                      class="form-control"
+                      formControlName="zipCode"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="checkbox" id="isAddSame" formControlName="isAddSame" />
+            <label for="isAddSame"
+              >Current address and permenent address same</label
+            >
+          </div>
+
+          <!-- <div class="row d-flex justify-content-left">
+            <button
+              type="button"
+              mat-raised-button
+              color="primary"
+              (click)="onAddSkills()"
+              *ngIf="skillsArr.length < 3   ; else : skillLimitExid"
+            >
+              Add Skill
+            </button>
+          </div>
+          <label for="skills">Skills*</label>
+          <div class="row">
+            <div class="col-md-10">
+              <div formArrayName="skills"  *ngFor="let skill of skillsArr.controls; let i = index">
+                <div
+                 
+                  class="form-group"
+                >
+                  <input
+                    type="text"
+                    class="form-control mb-2"
+                    [formControlName]="i"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button type="button" mat-raised-button color="warn">
+                Remove
+              </button>
+            </div>
+          </div>
+          <ng-template #skillLimitExid>
+            <p class="alert alert-danger">No More Skill Can Add ..!!</p>
+          </ng-template> -->
+          <div class="row">
+            <div class="col-md-12 mb-2">
+              <button
+                type="button"
+                mat-raised-button
+                color="primary"
+                (click)="onAddSkills()"
+                *ngIf="skillsArr.length < 3; else skillLimitExid"
+              >
+                Add Skill
+              </button>
+            </div>
+          </div>
+
+          <label>Skills*</label>
+
+          <div formArrayName="skills">
+            <div
+              class="row mb-2"
+              *ngFor="let skill of skillsArr.controls; let i = index"
+            >
+              <div class="col-md-10">
+                <input type="text" class="form-control" [formControlName]="i" />
+              </div>
+
+              <div class="col-md-2">
+                <button
+                  type="button"
+                  mat-raised-button
+                  color="warn"
+                  
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <ng-template #skillLimitExid>
+            <p class="alert alert-danger">No More Skills Can Be Added !!</p>
+          </ng-template>
+          <button class="w-100" mat-raised-button color="primary" type="submit">
+            Add User
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
