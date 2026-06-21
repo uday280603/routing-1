@@ -65,6 +65,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatChipsModule} from '@angular/material/chips';
 
 // Components
 import { HomeComponent } from './shared/component/home/home.component';
@@ -107,7 +108,8 @@ import { SUserComponent } from './shared/component/users/s-user/s-user.component
     MatToolbarModule,
     MatTableModule,
     MatSelectModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -52,6 +52,12 @@ const routs: Routes = [
     path : 'users/:userId',
     component : SUserComponent
   }
+   ,
+    
+  {
+    path : 'users/:userId/edit',
+    component : FormComponent
+  }
  
   ,
   {

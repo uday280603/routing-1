@@ -10,6 +10,8 @@ export interface Iuser {
   isActive: boolean;
   address: Iaddress;
   isAddSame: boolean;
+    profileDescription: string
+
 }
 
 export interface Iaddress {

@@ -78,6 +78,20 @@
             >
           </div>
           <div class="form-group">
+            <label for="profileDescription">Profile Description*</label>
+            <textarea
+              class="form-control"
+              name="profileDescription"
+              id="profileDescription"
+              formControlName="profileDescription"
+            ></textarea>
+            <strong
+            *ngIf="getControl['profileDescription'].touched && getControl['profileDescription'].hasError('required')"
+             class="text-danger">
+              Profile description is necessary field..!
+            </strong>
+          </div>
+          <div class="form-group">
             <label for="isActive">Is Active*</label>
             <select
               name="isActive"
@@ -246,12 +260,7 @@
               </div>
 
               <div class="col-md-2">
-                <button
-                  type="button"
-                  mat-raised-button
-                  color="warn"
-                  
-                >
+                <button type="button" mat-raised-button color="warn">
                   Remove
                 </button>
               </div>

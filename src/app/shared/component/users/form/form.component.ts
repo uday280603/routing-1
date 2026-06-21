@@ -57,6 +57,7 @@ export class FormComponent implements OnInit {
       experienceYears: new FormControl(null, [Validators.required]),
       isActive: new FormControl(false, [Validators.required]),
       isAddSame: new FormControl({ value: null, disabled: true }),
+      profileDescription : new FormControl(null, [Validators.required]) ,
       address: new FormGroup({
         current: new FormGroup({
           city: new FormControl(null, [Validators.required]),
