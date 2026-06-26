@@ -6,8 +6,9 @@
   </div>
   <div class="col-md-4">
     Product List
-    <ul class="list-group">
+    <ul class="list-group" *ngIf="getAllProducts.length >0 ; else noData">
       <li
+      routerLinkActive="active"
         [routerLink]="[product.pid]"
         [queryParams]="{cr : product.canReturn}"
         class="list-group-item d-flex justify-content-between"
@@ -24,5 +25,12 @@
       </li>
     </ul>
   </div>
-  <div class="col-md-8">Product Description</div>
+  <div class="col-md-8">
+    <router-outlet></router-outlet>
+  </div>
 </div>
+<ng-template #noData>
+  <p class="alert alert-info">
+    NO PRODUCT IN DATABASE..!
+  </p>
+</ng-template>

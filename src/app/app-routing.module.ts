@@ -17,57 +17,79 @@ const routs: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch :'full'
+    pathMatch: 'full',
   },
   {
     path: 'users',
     component: UsersComponent,
-  },
-  {
-    path :'products',
-    component : ProductsComponent
-  },
-  {
-    path :'products/addProduct',
-    component : ProductFormComponent
+    children: [
+      {
+        path: 'addUser',
+        component: FormComponent,
+      },
+      {
+        path: ':userId',
+        component: SUserComponent,
+      },
 
+      {
+        path: ':userId/edit',
+        component: FormComponent,
+      },
+    ],
   },
   {
-    path : 'products/:id',
-    component : SProductComponent
-  }
-  ,
+    path: 'products',
+    component: ProductsComponent,
+    children: [
+      {
+        path: 'addProduct',
+        component: ProductFormComponent,
+      },
+      {
+        path: ':id',
+        component: SProductComponent,
+      },
+      {
+        path: ':id/edit',
+        component: ProductFormComponent,
+      },
+    ],
+  },
   {
-    path : 'products/:id/edit',
-    component : ProductFormComponent
-  }
-  ,
-    
+    path: 'products/addProduct',
+    component: ProductFormComponent,
+  },
   {
-    path : 'users/addUser',
-    component : FormComponent
-  }
-  ,
+    path: 'products/:id',
+    component: SProductComponent,
+  },
   {
-    path : 'users/:userId',
-    component : SUserComponent
-  }
-   ,
-    
+    path: 'products/:id/edit',
+    component: ProductFormComponent,
+  },
+
   {
-    path : 'users/:userId/edit',
-    component : FormComponent
-  }
- 
-  ,
+    path: 'users/addUser',
+    component: FormComponent,
+  },
   {
-    path : 'fairs',
-    component : FairsComponent
-  }
+    path: 'users/:userId',
+    component: SUserComponent,
+  },
+
+  {
+    path: 'users/:userId/edit',
+    component: FormComponent,
+  },
+  {
+    path: 'fairs',
+    component: FairsComponent,
+  },
 ];
 
 @NgModule({
-    imports : [RouterModule.forRoot(routs)],
-    exports :[RouterModule]
+  imports: [RouterModule.forRoot(routs)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

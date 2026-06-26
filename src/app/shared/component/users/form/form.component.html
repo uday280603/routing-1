@@ -61,12 +61,12 @@
               formControlName="experienceYears"
               class="form-control"
             >
-              <option [ngValue]="'0 to 2 Years'">0 to 2 Years</option>
-              <option [ngValue]="'2 to 4 Years'">2 to 4 Years</option>
-              <option [ngValue]="'4 to 6 Years'">4 to 6 Years</option>
-              <option [ngValue]="'6 to 8 Years'">6 to 8 Years</option>
-              <option [ngValue]="'8 to 10 Years'">8 to 10 Years</option>
-              <option [ngValue]="'10+ Years'">10+ Years</option>
+              <option value="0 to 2 Years">0 to 2 Years</option>
+              <option value="2 to 4 Years">2 to 4 Years</option>
+              <option value="4 to 6 Years">4 to 6 Years</option>
+              <option value="6 to 8 Years">6 to 8 Years</option>
+              <option value="8 to 10 Years">8 to 10 Years</option>
+              <option value="10+ Years">10+ Years</option>
             </select>
             <strong
               *ngIf="
@@ -270,8 +270,11 @@
           <ng-template #skillLimitExid>
             <p class="alert alert-danger">No More Skills Can Be Added !!</p>
           </ng-template>
-          <button class="w-100" mat-raised-button color="primary" type="submit">
+          <button *ngIf="!isInEditMode" class="w-100" mat-raised-button color="primary" type="submit">
             Add User
+          </button>
+           <button *ngIf="isInEditMode" class="w-100" mat-raised-button color="accent" type="button" (click)="onUpdateUser()">
+            Update User
           </button>
         </form>
       </div>

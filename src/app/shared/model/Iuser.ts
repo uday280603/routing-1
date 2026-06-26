@@ -2,8 +2,8 @@
 
 export interface Iuser {
   userName: string;
-  userId: string;
-  userRole: string;
+  userId: string
+  userRole: "Candidate" | "Admin";
   profileImage: string;
   skills: string[];
   experienceYears: string;
