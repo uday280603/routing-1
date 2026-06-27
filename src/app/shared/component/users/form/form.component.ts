@@ -123,17 +123,11 @@ export class FormComponent implements OnInit {
       this._userservice.getUserById(this.userId).subscribe({
         next: (data) => {
           this.userObj = data;
-
           this.userForm.patchValue(this.userObj);
-
-          // Patch permanent address
           this.userForm
             .get('address.permanent')
             ?.patchValue(this.userObj.address.permanent);
-
-          // Patch skills
           this.skillsArr.clear();
-
           this.userObj.skills.forEach((skill) => {
             this.skillsArr.push(new FormControl(skill, Validators.required));
           });
