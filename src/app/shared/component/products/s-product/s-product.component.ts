@@ -28,26 +28,16 @@ export class SProductComponent implements OnInit {
     
   }
   getProducts() {
-  //  this.productId = this._routes.snapshot.params['id'];
-    this.productId = this._routes.snapshot.paramMap.get('id')!;
-    console.log(this.productId);
-    if (this.productId) {
+    this._routes.params.subscribe(params =>{
+      this.productId = params['id']!;
       this._productService.fetchProductById(this.productId).subscribe({
-        next: (data) => {
-          this.productObj = data;
+        next : data =>{
+          this.productObj = data
         }
-      });
-    }
-    // this._routes.params.subscribe((param) => {
-    //   this.productId = param['id'];
-    //   if (this.productId) {
-    //     this._productService.fetchProductById(this.productId).subscribe({
-    //       next: (data) => {
-    //         this.productObj = data;
-    //       },
-    //     });
-    //   }
-    // });
+      })
+    })
+
+
   }
 
   onRemove() {
@@ -68,9 +58,7 @@ export class SProductComponent implements OnInit {
   }
 
   redirectToEdit() {
-    //   this._router.navigate(['/products',this.productId,'edit'],
-    //     {queryParamsHandling :'preserve'}
-    //   )
+
     this._router.navigate(['edit'], {
       queryParamsHandling: 'preserve',
       relativeTo: this._routes,

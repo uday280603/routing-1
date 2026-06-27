@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Iproduct } from 'src/app/shared/model/Iproduct';
 import { Iuser } from 'src/app/shared/model/Iuser';
 import { UserService } from 'src/app/shared/service/user.service';
@@ -32,11 +32,13 @@ export class SUserComponent implements OnInit {
   }
 
   getUser() {
-    this.userId = this._activatedRoute.snapshot.paramMap.get('userId')!;
-    this._userService.getUserById(this.userId).subscribe({
-      next: (data) => {
-        this.getUserObj = data;
-      },
+    this._activatedRoute.params.subscribe((params: Params) => {
+      this.userId = params['userId']!;
+      this._userService.getUserById(this.userId).subscribe({
+        next: (data) => {
+          this.getUserObj = data;
+        },
+      });
     });
   }
 
