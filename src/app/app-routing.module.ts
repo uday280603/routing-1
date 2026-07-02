@@ -8,20 +8,24 @@ import { SProductComponent } from './shared/component/products/s-product/s-produ
 import { ProductFormComponent } from './shared/component/products/product-form/product-form.component';
 import { FormComponent } from './shared/component/users/form/form.component';
 import { SUserComponent } from './shared/component/users/s-user/s-user.component';
+import { AuthComponent } from './shared/component/auth/auth.component';
+import { AuthGuard } from './shared/service/auth.guard';
 
 const routs: Routes = [
+
+  {
+    path :'',
+    component : AuthComponent
+  }
+  ,
   {
     path: 'home',
     component: HomeComponent,
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
     path: 'users',
     component: UsersComponent,
+    canActivate :[AuthGuard],
     children: [
       {
         path: 'addUser',
@@ -41,6 +45,7 @@ const routs: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
+    canActivateChild :[AuthGuard],
     children: [
       {
         path: 'addProduct',
@@ -57,34 +62,9 @@ const routs: Routes = [
     ],
   },
   {
-    path: 'products/addProduct',
-    component: ProductFormComponent,
-  },
-  {
-    path: 'products/:id',
-    component: SProductComponent,
-  },
-  {
-    path: 'products/:id/edit',
-    component: ProductFormComponent,
-  },
-
-  {
-    path: 'users/addUser',
-    component: FormComponent,
-  },
-  {
-    path: 'users/:userId',
-    component: SUserComponent,
-  },
-
-  {
-    path: 'users/:userId/edit',
-    component: FormComponent,
-  },
-  {
     path: 'fairs',
     component: FairsComponent,
+    canActivate :[AuthGuard]
   },
 ];
 

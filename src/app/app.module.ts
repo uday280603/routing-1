@@ -77,6 +77,8 @@ import { ProductFormComponent } from './shared/component/products/product-form/p
 import { GetConfirmationComponent } from './shared/component/get-confirmation/get-confirmation.component';
 import { FormComponent } from './shared/component/users/form/form.component';
 import { SUserComponent } from './shared/component/users/s-user/s-user.component';
+import { AuthComponent } from './shared/component/auth/auth.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -89,13 +91,15 @@ import { SUserComponent } from './shared/component/users/s-user/s-user.component
     ProductFormComponent,
     GetConfirmationComponent,
     FormComponent,
-    SUserComponent
+    SUserComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
 
     // Material
     MatButtonModule,

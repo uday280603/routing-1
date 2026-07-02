@@ -1,0 +1,73 @@
+<main class="main-auth">
+  <ng-container *ngIf="!isAllReadyHasAccoount"
+    class="d-flex justify-content-center align-item-center"
+  >
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="font-weight-bold">Sign Up</h3>
+          <form [formGroup]="signUpForm" (ngSubmit)="onSignInUser()">
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="text" class="form-control" formControlName="email" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password*</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="userRole">User Role*</label>
+              <select
+                type="text"
+                class="form-control"
+                formControlName="userRole"
+              >
+                <option value="admin">Admin</option>
+                <option value="buyer">Buyer</option>
+                <option value="superAdmin">SuperAdmin</option>
+              </select>
+            </div>
+            <button mat-raised-button color="primary" class="w-100">
+              Sign Up
+            </button>
+          </form>
+          <a href="javascript:;" (click)="isAllReadyHasAccoount=true"
+            >Allready have account</a
+          >
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isAllReadyHasAccoount">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="font-weight-bold">Log In</h3>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <div class="form-group">
+            <label for="email">Email*</label>
+            <input type="text" class="form-control" formControlName="email" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password*</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="password"
+            />
+          </div>
+
+          <button mat-raised-button color="primary" class="w-100">
+            Log In
+          </button>
+        </form>
+         <a href="javascript:;" (click)="isAllReadyHasAccoount=false"
+            >Don't have account ? Sign Up</a
+          >
+      </div>
+    </div>
+  </ng-container>
+</main>
